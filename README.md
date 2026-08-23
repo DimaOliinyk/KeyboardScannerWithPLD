@@ -153,6 +153,8 @@ D & X3 & X2;
 клавіш 3х3, а не 4х4 на яку розрахована схема PLD.
 
 ```
+#include "Keyboard.h"
+
 class StreamDeck
 {
 public:
