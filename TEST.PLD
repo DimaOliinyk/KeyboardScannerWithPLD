@@ -1,0 +1,46 @@
+Name     Test ;
+PartNo   00 ;
+Date     23.03.2025 ;
+Revision 01 ;
+Designer Engineer ;
+Company  KPI ;
+Assembly None ;
+Location  ;
+Device   G22V10 ;
+
+/* *************** INPUT PINS DCD *********************/
+PIN     1=X0; /* Decoder input switches between  */ 
+PIN     2=X1; /* 4 pins connected to 4 columns   */
+
+/* *************** INPUT PINS MULT *********************/
+PIN     3=X2; /* Multeplexes controlling pins to */ 
+PIN     4=X3; /* switch between 4 inputs	     */
+
+PIN     5=A; /* Input signal 1 connect to row 1 */
+PIN     6=B; /* Input signal 2 connect to row 2 */
+PIN     7=C; /* Input signal 3 connect to row 3 */
+PIN     8=D; /* Input signal 4 connect to row 4 */
+
+
+/* *************** OUTPUT PINS DCD *********************/
+PIN     23=Y0; /* Column 1                            */ 
+PIN     22=Y1; /* Column 2                            */ 
+PIN     21=Y2; /* Column 3                            */ 
+PIN     20=Y3; /* Column 4                            */ 
+
+/* *************** OUTPUT PINS MULT *********************/
+PIN 	 19=Yout; /* Ouput of the multeplexer (main output) */
+
+/* DCD Logic */
+Y0 = !X1 & !X0;
+Y1 = !X1 & X0;
+Y2 = X1 & !X0;
+Y3 = X1 & X0;
+
+/* MULT Logic */
+Yout = A & !X3 & !X2  #  
+	B & !X3 & X2  #  
+	C & X3 & !X2  #  
+	D & X3 & X2;
+
+
